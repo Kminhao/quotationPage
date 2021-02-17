@@ -1,0 +1,1 @@
+window.HG_KEY = "4dd031ac"

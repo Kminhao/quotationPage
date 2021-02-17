@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <script src="./assets//jquery.js"> </script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotação App</title>
+</head>
+
+<body>
+    <div class="navbar-container">
+        <nav class="navbar">
+            <a href="/page/index.html">Inicio</a>
+            <a href="/page/cotacoes.html">Cotações</a>
+            <a href="/page/sobre.html">Sobre</a>
+            <a href="/page/contato.html">Contato</a>         
+        </nav>
+    </div>
+
+    <div class="content">
+        <div class="card">
+            <h3 id="name"></h3>
+            <h3 id="id"></h3>
+            <h3 id="high"></h3>
+            <h3 id="low"></h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. </br> Culpa consectetur porro omnis cumque ab
+                non minus fugiat praesentium, accusantium dignissimos!</p>
+        </div>
+
+        <div class="card">
+            <h3>TEMPLATE</h3>
+            <h3>Data</h3>
+            <h3>Cotação</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. </br> Culpa consectetur porro omnis cumque ab
+                non minus fugiat praesentium, accusantium dignissimos!</p>
+        </div>
+
+    </div>
+    </div>
+</body>
+
+
+
+<script>
+
+
+
+    const cotacaoMoedas = $.ajax({
+        
+        url: "https://economia.awesomeapi.com.br/json/all",
+        method: 'GET',
+        datatype: 'json'
+    }).done((data) => {
+        console.log(data);
+
+        
+        
+        var name = [JSON.stringify(data["USD"].name)];
+        var formatName = JSON.parse(name[0])        
+        document.getElementById("name").innerHTML = formatName;
+        
+        
+        var code = [JSON.stringify(data["USD"].code)];
+        var formatCode = JSON.parse(code[0])
+        document.getElementById("id").innerHTML = "Código: " + formatCode;
+
+
+
+        var high = [JSON.stringify(data["USD"].high)];
+        var formathigh = JSON.parse(high[0])        
+        document.getElementById("high").innerHTML = "Alta: " + formathigh;
+
+
+        var low = [JSON.stringify(data["USD"].low)];
+        var formatlow = JSON.parse(low[0])       
+        document.getElementById("low").innerHTML = "Baixa: " + formatlow;
+
+        
+
+       
+
+    })
+
+
+
+
+
+
+
+    // $('#botao').click(function () {
+    //     var link = "https://servicodados.ibge.gov.br/api/v1/pesquisas/";
+    //     var valor1 = document.getElementById("teste").value;
+    //     $.ajax({
+    //         url: link,
+    //         type: 'GET',
+    //         dataType: 'json',
+
+    //     })
+    //         .done(function (data) {
+    //             console.log("success");
+    //             console.log(data);
+    //             document.getElementById("demo").innerHTML = data;
+
+    //         })
+    //         .fail(function () {
+    //             console.log("error");
+    //         })
+    //         .always(function () {
+    //             console.log("complete");
+    //         });
+    // });
+</script>
+
+</html>

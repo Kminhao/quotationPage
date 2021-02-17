@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="style.css">
+    <script src="./util//jquery.js"> </script>
+    <script src="./util//config.js"> </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotações</title>
+</head>
+
+<body>
+    <div class="navbar-container">
+        <nav class="navbar">
+            <a href="/page/index.html">Inicio</a>
+            <a href="/page/cotacoes.html">Cotações</a>
+            <a href="/page/sobre.html">Sobre</a>
+            <a href="/page/contato.html">Contato</a>
+        </nav>
+    
+    
+        <div class="container">
+
+        </div>
+    
+    </div>
+
+</body>
+
+
+<script>
+
+
+
+
+    const makeCardCiel3 = (uri) => {
+        const url =`https://api.hgbrasil.com/finance/stock_price?key=${HG_KEY}&symbol=${uri}&format=json`;
+        $.ajax({
+            url: url,
+            method: 'GET',
+            datatype: 'json'
+        }).done((data) => {
+
+            const object = data.results
+            console.log(object.CIEL3)
+
+            const dadosParse = data.results.CIEL3;
+            console.log(dadosParse)
+
+            const h3Symbol = document.createElement('h3');
+            h3Symbol.innerHTML = "Código:  " + dadosParse.symbol;
+
+            const h3Name = document.createElement('h3');
+            h3Name.innerHTML = "Empresa:  " + dadosParse.name;
+
+            const h3High = document.createElement('h3');
+            h3High.innerHTML = "Preço:  " + dadosParse.price
+
+            const h3Date = document.createElement('h3');
+            h3Date.innerHTML = "Data/Hora:  " + dadosParse.updated_at
+
+            const descriptionTitle = document.createElement('h3');
+            descriptionTitle.innerHTML = "Descrição"
+
+            const pDescription = document.createElement('p');
+            pDescription.innerHTML = dadosParse.description;
+
+            const card = document.createElement('div');
+            card.className = "card"
+            card.append(h3Symbol)
+            card.appendChild(h3Name)
+            card.appendChild(h3High)
+            card.appendChild(h3Date)
+            card.append(descriptionTitle)
+            card.appendChild(pDescription)
+
+
+            $(".container").append(card);
+
+        })
+    }
+
+    const makeCardPetr4 = (uri) => {
+        const url =`https://api.hgbrasil.com/finance/stock_price?key=${HG_KEY}&symbol=${uri}&format=json`;
+        $.ajax({
+            url: url,
+            method: 'GET',
+            datatype: 'json'
+        }).done((data) => {
+
+            const object = data.results
+            console.log(object.CIEL3)
+
+            const dadosParse = data.results.PETR4;
+            console.log(dadosParse)
+
+            const h3Symbol = document.createElement('h3');
+            h3Symbol.innerHTML = "Código:  " + dadosParse.symbol;
+
+            const h3Name = document.createElement('h3');
+            h3Name.innerHTML = "Empresa:  " + dadosParse.name;
+
+            const h3High = document.createElement('h3');
+            h3High.innerHTML = "Preço:  " + dadosParse.price
+
+            const h3Date = document.createElement('h3');
+            h3Date.innerHTML = "Data/Hora:  " + dadosParse.updated_at
+
+            const descriptionTitle = document.createElement('h3');
+            descriptionTitle.innerHTML = "Descrição"
+
+            const pDescription = document.createElement('p');
+            pDescription.innerHTML = dadosParse.description;
+
+            const card = document.createElement('div');
+            card.className = "card"
+            card.append(h3Symbol)
+            card.appendChild(h3Name)
+            card.appendChild(h3High)
+            card.appendChild(h3Date)
+            card.append(descriptionTitle)
+            card.appendChild(pDescription)
+
+
+            $(".container").append(card);
+
+        })
+    }
+
+    makeCardCiel3("ciel3")
+    makeCardCiel3("ciel3")
+    makeCardPetr4("petr4")
+    makeCardPetr4("petr4")
+
+</script>
+
+
+
+
+</html>
